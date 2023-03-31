@@ -16,7 +16,7 @@ RUN apk add --update \
 
 # Copy the app code to the container
 COPY ./app /app
-EXPOSE 5050:5050
+EXPOSE 5004:5004
 # Set the default command to run the app.py file
 CMD ["python", "app.py"]
 

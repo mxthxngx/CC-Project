@@ -6,7 +6,7 @@ FROM python:3.8-alpine
 COPY ./app/requirements.txt /app/requirements.txt
 
 # Set the working directory to /app
-WORKDIR /app
+WORKDIR /app/subtraction
 
 # Install the required packages
 RUN apk add --update \
@@ -15,9 +15,9 @@ RUN apk add --update \
     && rm -rf /var/cache/apk/*
 
 # Copy the app code to the container
-COPY ./app /app
-EXPOSE 5050:5050
+COPY ./app/addition /app/subtraction
+EXPOSE 5002:5002
 # Set the default command to run the app.py file
-CMD ["python", "app.py"]
+CMD ["python", "addition.py"]
 
 #RUN python app.py

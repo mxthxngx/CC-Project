@@ -1,9 +1,9 @@
 from flask import Flask, request, flash, render_template
 from flask_restful import Api, Resource, reqparse
-from addition import Addition
-from subtraction import Subtraction
-from multiplication import Multiplication
-from division import Division
+from addition.addition import Addition
+from subtraction.subtraction import Subtraction
+from multiplication.multiplication import Multiplication
+from division.division import Division
 app = Flask(__name__)
 app.secret_key = 'thisisjustarandomstring'
 api = Api(app)
@@ -19,3 +19,31 @@ if __name__ == '__main__':
     app.run(debug=True,
         port=5050,
         host="0.0.0.0")
+@app.route('/', methods=['POST', 'GET'])
+def index():
+    number_1 = request.form.get("first")
+    number_2 = request.form.get('second')
+    operation = request.form.get('operation')
+    result = 0
+    if operation == 'add':
+        add = Addition()
+        result = add.get(int(number_1), int(number_2))
+    elif operation == 'minus':
+        sub = Subtraction()
+        result = sub.get(int(number_1), int(number_2))
+    elif operation == 'multiply':
+        mult = Multiplication()
+        result = mult.get(int(number_1), int(number_2))
+    elif operation == 'divide':
+        div = Division()
+        result = div.get(int(number_1), int(number_2))
+
+    flash(f'The result of operation {operation} on {number_1} and {number_2} is {result}')
+    return render_template('index.html')
+
+if __name__ == '__main__':
+    app.run(
+        debug=True,
+        port=5050,
+        host="0.0.0.0"
+    )

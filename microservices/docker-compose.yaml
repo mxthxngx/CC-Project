@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   landing-service:
-    build: ./landing/app/landing
+    build: ./landing
     hostname: landing-service
     ports:
       - 5050:5050

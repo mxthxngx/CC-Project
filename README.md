@@ -1,4 +1,7 @@
 # Breaking down monoliths 🪨⛏️
+Commands so far:
+docker build -t ccassignment .
+docker run --rm -it -p 5050:5050 ccassignment
 
 This problem statement has two objectives:
 - Get familiar with reading error stack trace and debugging code.
