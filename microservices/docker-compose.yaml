@@ -12,7 +12,7 @@ services:
           - landing-service
           
   addition-service:
-    build: ./landing/app/addition
+    build: ./addition
     hostname: addition-service
     ports:
       - 5001:5001
@@ -22,7 +22,7 @@ services:
           - addition-service
         
   subtraction-service:
-    build: ./landing/app/subtraction
+    build: ./subtraction
     hostname: subtraction-service
     ports:
       - 5002:5002
@@ -32,7 +32,7 @@ services:
           - subtraction-service
         
   multiplication-service:
-    build: ./landing/app/multiplication
+    build: ./multiplication
     hostname: multiplication-service
     ports:
       - 5003:5003
@@ -40,9 +40,10 @@ services:
       sample:
         aliases:
           - multiplication-service
+
         
   division-service:
-    build: ./landing/app/division
+    build: ./division
     hostname: division-service
     ports:
       - 5004:5004

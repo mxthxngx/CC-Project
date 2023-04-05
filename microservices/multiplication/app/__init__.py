@@ -1,0 +1,1 @@
+import microservices.multiplication.app.app as app

@@ -1,9 +1,10 @@
 from flask import Flask, request, flash, render_template
+import sys
 from flask_restful import Api, Resource, reqparse
-from addition.addition import Addition
-from subtraction.subtraction import Subtraction
-from multiplication.multiplication import Multiplication
-from division.division import Division
+from addition.app import Addition
+from subtraction.app import Subtraction
+from multiplication.app import Multiplication
+from division.app import Division
 app = Flask(__name__)
 app.secret_key = 'thisisjustarandomstring'
 api = Api(app)
@@ -15,10 +16,7 @@ api.add_resource(Multiplication, '/multiply/<int:num1>/<int:num2>')
 api.add_resource(Division, '/divide/<int:num1>/<int:num2>')
 
 
-if __name__ == '__main__':
-    app.run(debug=True,
-        port=5050,
-        host="0.0.0.0")
+
 @app.route('/', methods=['POST', 'GET'])
 def index():
     number_1 = request.form.get("first")
